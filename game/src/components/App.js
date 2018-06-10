@@ -8,17 +8,18 @@ class App extends Component {
   }
 
   render() {
+    const { data } = this.props
     return (
       <div className="App">
-        HI THERE
+        {console.log(data)}
       </div>
     );
   }
 }
 
-function mapStateToProps() {
+function mapStateToProps({ questions }) {
   return {
-    data: "TESTING"
+    data: questions
   }
 }
 
