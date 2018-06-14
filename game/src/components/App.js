@@ -12,20 +12,14 @@ class App extends Component {
     const { data } = this.props
     return (
       <div className="App">
-        {console.log(data)}
-        <p>{data['6ni6ok3ym7mf1p33lnez']}</p>
       </div>
     );
   }
 }
 
 function mapStateToProps({ questions }) {
-  optionOneText = questions[]
-  optionTwoText = questions[]
-  author = questions[]
-
   return {
-    data: formatQuestion(optionOneText, optionTwoText, author)
+
   }
 }
 
