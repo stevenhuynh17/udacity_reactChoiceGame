@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
-import { formatQuestion } from '../utils/_DATA'
+import Dashboard from './Dashboard'
 
 class App extends Component {
   componentDidMount() {
@@ -12,15 +12,10 @@ class App extends Component {
     const { data } = this.props
     return (
       <div className="App">
+        <Dashboard />
       </div>
     );
   }
 }
 
-function mapStateToProps({ questions }) {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps)(App);
+export default connect()(App);
