@@ -14,7 +14,7 @@ class Question extends Component {
           <p>{formatDate(timestamp)}</p>
           <div onClick={(e) => console.log("TESTING")}>{optionOne.text}</div>
           <span> vs </span>
-          <span>{optionTwo.text}</span>
+          <div onClick={(e) => console.log("IT WORKS")}>{optionTwo.text}</div>
         </div>
       </div>
     )
