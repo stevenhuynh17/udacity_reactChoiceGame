@@ -16,6 +16,19 @@ a {
   padding: 10px;
 }
 
+.dropdown {
+  height: 35px;
+  text-transform: uppercase;
+  margin: 35px auto;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,.29);
+  cursor: pointer;
+  background: #fff;
+  font-size: 16px;
+  width: 200px;
+  position: relative;
+}
+
 .btn {
   text-transform: uppercase;
   margin: 35px auto;

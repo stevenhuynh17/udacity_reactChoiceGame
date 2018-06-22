@@ -4,7 +4,6 @@ import Question from './Question'
 
 class Dashboard extends Component {
   render() {
-    console.log(this.props.data)
     return(
       <div>
         <h3>Questions</h3>
@@ -21,7 +20,6 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps({ questions }) {
-  console.log(Object.keys(questions))
   return {
     data: Object.keys(questions)
       .sort((a,b) => questions[b].timestamp - questions [a].timestamp)

@@ -12,9 +12,10 @@ class Question extends Component {
         <div>
           <p>{author}</p>
           <p>{formatDate(timestamp)}</p>
-          <div onClick={(e) => console.log("JOANNE SUCKS")}>{optionOne.text}</div>
+          <p>Would you rather?</p>
+          <span onClick={(e) => console.log("JOANNE SUCKS")}>{optionOne.text}</span>
           <span> vs </span>
-          <div onClick={(e) => console.log("VIVIAN SUCKS")}>{optionTwo.text}</div>
+          <span onClick={(e) => console.log("VIVIAN SUCKS")}>{optionTwo.text}</span>
         </div>
       </div>
     )
