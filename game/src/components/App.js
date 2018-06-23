@@ -6,6 +6,7 @@ import Dashboard from './Dashboard'
 import Nav from './Nav'
 import Login from './Login'
 import Answered from './Answered'
+import Question from './Question'
 
 class App extends Component {
   componentDidMount() {
@@ -21,10 +22,17 @@ class App extends Component {
           <Login />
           <Nav />
           <Route path='/' exact component={Dashboard}/>
+          <Route path='/questions/:id' component={Question}/>
         </div>
       </Router>
     );
   }
 }
 
-export default connect()(App);
+function mapStateToProps({ questions }) {
+  return {
+    data: Object.values(questions)
+  }
+}
+
+export default connect(mapStateToProps)(App);

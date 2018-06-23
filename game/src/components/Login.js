@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 class Login extends Component {
   render() {
     const { data } = this.props
-    const { id, name, avatarURL } = data
+    
     return(
       <div>
         <form>
