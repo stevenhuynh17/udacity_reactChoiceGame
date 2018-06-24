@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 class Login extends Component {
   render() {
     const { data } = this.props
-    
+
     return(
       <div>
         <form>
-          <select className='dropdown'>
+          <select className='dropdown' onChange={console.log("TESTING 123")}>
           {data.map((user) => (
             <option key={user.id}>{user.name}</option>
           ))}
@@ -20,9 +20,10 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
   return {
-    data: Object.values(users)
+    data: Object.values(users),
+    current: authedUser === null
   }
 }
 
