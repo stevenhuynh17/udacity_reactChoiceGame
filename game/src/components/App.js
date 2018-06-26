@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { handleQuestions, handleUsers } from '../actions/shared'
 import Dashboard from './Dashboard'
-import Nav from './Nav'
 import Login from './Login'
 import Answered from './Answered'
 import Question from './Question'
+import NewQuestion from './NewQuestion'
+import Error from './Error'
 
 class App extends Component {
   componentDidMount() {
@@ -19,10 +20,13 @@ class App extends Component {
     return (
       <Router>
         <div className='container'>
-          <Login />
-          <Nav />
-          <Route path='/' exact component={Dashboard}/>
-          <Route path='/questions/:id' component={Question}/>
+          <Switch>
+            <Route path='/login' component={Login}/>
+            <Route path='/' exact component={Dashboard}/>
+            <Route path='/questions/:id' component={Question}/>
+            <Route path='/add' component={NewQuestion}/>
+            <Route component={Error}/>
+          </Switch>
         </div>
       </Router>
     );

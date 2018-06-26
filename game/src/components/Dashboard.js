@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
+import Nav from './Nav'
 
 class Dashboard extends Component {
   render() {
     return(
       <div>
+        <Nav />
         <h3>Questions</h3>
         <ul>
           {this.props.data.map((id) => (
