@@ -8,6 +8,7 @@ import Answered from './Answered'
 import Question from './Question'
 import NewQuestion from './NewQuestion'
 import Error from './Error'
+import Leaderboard from './Leaderboard'
 
 class App extends Component {
   componentDidMount() {
@@ -25,6 +26,7 @@ class App extends Component {
             <Route path='/' exact component={Dashboard}/>
             <Route path='/questions/:id' component={Question}/>
             <Route path='/add' component={NewQuestion}/>
+            <Route path='/leaderboard' component={Leaderboard}/>
             <Route component={Error}/>
           </Switch>
         </div>
@@ -35,7 +37,7 @@ class App extends Component {
 
 function mapStateToProps({ questions }) {
   return {
-    data: Object.values(questions)
+    // data: Object.values(questions)
   }
 }
 
