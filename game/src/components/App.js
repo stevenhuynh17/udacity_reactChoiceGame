@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { handleQuestions, handleUsers } from '../actions/shared'
+
 import Dashboard from './Dashboard'
 import Login from './Login'
 import Answered from './Answered'
 import Question from './Question'
-import NewQuestion from './NewQuestion'
+import AddQuestion from './AddQuestion'
 import Error from './Error'
 import Leaderboard from './Leaderboard'
 
@@ -25,7 +26,7 @@ class App extends Component {
             <Route path='/login' component={Login}/>
             <Route path='/' exact component={Dashboard}/>
             <Route path='/questions/:id' component={Question}/>
-            <Route path='/add' component={NewQuestion}/>
+            <Route path='/add' component={AddQuestion}/>
             <Route path='/leaderboard' component={Leaderboard}/>
             <Route component={Error}/>
           </Switch>

@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class Login extends Component {
+  test = (e) => {
+    <Link to="/"></Link>
+  }
+
   render() {
     const { data } = this.props
 
     return(
       <div>
-        <form>
-          <select className='dropdown' onChange={console.log("TESTING 123")}>
+        <form onSubmit={this.test}>
+          <select className='dropdown' onChange={console.log(this.test)}>
           {data.map((user) => (
-            <option key={user.id}>{user.name}</option>
+            <option key={user.id} value={user.name}>{user.name}</option>
           ))}
           </select>
-          <button className='btn'>Login</button>
+          <input type='submit' value='Login' className='btn'/>
         </form>
       </div>
     )

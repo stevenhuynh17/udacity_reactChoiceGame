@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Nav from './Nav'
 
-class NewQuestion extends Component {
+class AddQuestion extends Component {
   render() {
     return(
       <div>
@@ -18,4 +18,4 @@ function mapStateToProps() {
   }
 }
 
-export default connect()(NewQuestion)
+export default connect()(AddQuestion)

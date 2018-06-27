@@ -60,6 +60,11 @@ a {
   font-weight: bold;
 }
 
+.logout {
+  border-style: solid;
+  padding: 10%;
+}
+
 .nav ul {
   display: flex;
   flex-direction: row;
