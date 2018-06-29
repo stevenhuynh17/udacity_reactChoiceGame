@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { authedUser } from '../actions/authedUser'
 
 class Login extends Component {
   test = (e) => {
-    <Link to="/"></Link>
+    e.preventDefault();
+    this.props.dispatch(authedUser())
   }
 
   render() {
@@ -18,7 +20,9 @@ class Login extends Component {
             <option key={user.id} value={user.name}>{user.name}</option>
           ))}
           </select>
-          <input type='submit' value='Login' className='btn'/>
+          <Link to='/'>
+            <input type='submit' value='Login' className='btn'/>
+          </Link>
         </form>
       </div>
     )
