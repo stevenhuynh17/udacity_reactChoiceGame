@@ -1,28 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import { authedUser } from '../actions/authedUser'
 
 class Login extends Component {
-  test = (e) => {
+  handleChange = (e) => {
+    // e.preventDefault();
+  }
+
+  handleSubmit = (e) => {
     e.preventDefault();
-    this.props.dispatch(authedUser())
+    this.props.dispatch(authedUser("TEST"))
+    console.log(e.target.value)
   }
 
   render() {
-    const { data } = this.props
-
+    const { data, current } = this.props
+    console.log(current)
     return(
       <div>
-        <form onSubmit={this.test}>
-          <select className='dropdown' onChange={console.log(this.test)}>
+        <form onSubmit={this.handleSubmit}>
+          <select value={"TEST"} onChange={this.handleChange} className='dropdown'>
           {data.map((user) => (
             <option key={user.id} value={user.name}>{user.name}</option>
           ))}
           </select>
-          <Link to='/'>
-            <input type='submit' value='Login' className='btn'/>
-          </Link>
+          <input type='submit' value='Login' className='btn'/>
         </form>
       </div>
     )
@@ -32,7 +35,7 @@ class Login extends Component {
 function mapStateToProps({ users, authedUser }) {
   return {
     data: Object.values(users),
-    current: authedUser === null
+    current: authedUser
   }
 }
 

@@ -1,6 +1,7 @@
 import { _getUsers, _getQuestions } from '../utils/_DATA'
 import { receiveQuestions } from './questions'
 import { receiveUsers } from './users'
+import { authedUser } from './authedUser'
 
 export function handleQuestions() {
   return (dispatch) => {
@@ -17,5 +18,11 @@ export function handleUsers() {
       .then((users) => {
         dispatch(receiveUsers(users))
       })
+  }
+}
+
+export function handleAuth() {
+  return (dispatch) => {
+    dispatch(authedUser(null))
   }
 }
