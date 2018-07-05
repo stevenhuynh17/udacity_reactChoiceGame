@@ -4,23 +4,32 @@ import { Link, Route } from 'react-router-dom'
 import { authedUser } from '../actions/authedUser'
 
 class Login extends Component {
-  handleChange = (e) => {
-    // e.preventDefault();
+  state = {
+    value: 'Sarah Edo'
   }
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.dispatch(authedUser("TEST"))
-    console.log(e.target.value)
+    e.preventDefault()
+    this.props.dispatch(authedUser(this.state.value))
+    return(
+      <div>
+        <p>TESTING</p>
+      </div>
+    )
+  }
+
+  handleChange = (e) => {
+    e.preventDefault()
+    this.setState({value: e.target.value})
   }
 
   render() {
     const { data, current } = this.props
-    console.log(current)
+
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
-          <select value={"TEST"} onChange={this.handleChange} className='dropdown'>
+          <select value={this.state.value} onChange={this.handleChange} className='dropdown'>
           {data.map((user) => (
             <option key={user.id} value={user.name}>{user.name}</option>
           ))}
