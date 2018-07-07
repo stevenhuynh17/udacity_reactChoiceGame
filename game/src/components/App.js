@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { handleQuestions, handleUsers, handleAuth } from '../actions/shared'
 
 import Dashboard from './Dashboard'
@@ -20,7 +20,14 @@ class App extends Component {
 
   render() {
     const { data } = this.props
-    console.log(data)
+    const PrivateRoute = ({ component: Component, ...rest }) => (
+      <Route {...rest} render={(props) => (
+          true
+          ? <Component {...props} />
+          : <Redirect to='/login'/>
+        )}/>
+    )
+
     return (
       <Router>
         <div className='container'>
@@ -28,10 +35,10 @@ class App extends Component {
             ? null
             : <Switch>
                 <Route path='/login' component={Login}/>
-                <Route path='/' exact component={Dashboard}/>
-                <Route path='/questions/:id' component={Question}/>
-                <Route path='/add' component={AddQuestion}/>
-                <Route path='/leaderboard' component={Leaderboard}/>
+                <PrivateRoute path='/' exact component={Dashboard}/>
+                <PrivateRoute path='/questions/:id' component={Question}/>
+                <PrivateRoute path='/add' component={AddQuestion}/>
+                <PrivateRoute path='/leaderboard' component={Leaderboard}/>
                 <Route component={Error}/>
               </Switch>
           }
