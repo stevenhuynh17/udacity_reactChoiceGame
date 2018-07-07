@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
-import LoadingBar from 'react-redux-loading'
+// import LoadingBar from 'react-redux-loading'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { handleQuestions, handleUsers, handleAuth } from '../actions/shared'
 
@@ -31,19 +31,21 @@ class App extends Component {
 
     return (
       <Router>
-        <div className='container'>
-          {this.props.data
-            ? null
-            : <Switch>
-                <Route path='/login' component={Login}/>
-                <PrivateRoute path='/' exact component={Dashboard}/>
-                <PrivateRoute path='/questions/:id' component={Question}/>
-                <PrivateRoute path='/add' component={AddQuestion}/>
-                <PrivateRoute path='/leaderboard' component={Leaderboard}/>
-                <Route component={Error}/>
-              </Switch>
-          }
-        </div>
+        <Fragment>
+          <div className='container'>
+            {this.props.data
+              ? null
+              : <Switch>
+                  <Route path='/login' component={Login}/>
+                  <PrivateRoute path='/' exact component={Dashboard}/>
+                  <PrivateRoute path='/questions/:id' component={Question}/>
+                  <PrivateRoute path='/add' component={AddQuestion}/>
+                  <PrivateRoute path='/leaderboard' component={Leaderboard}/>
+                  <Route component={Error}/>
+                </Switch>
+            }
+          </div>
+        </Fragment>
       </Router>
     );
   }
