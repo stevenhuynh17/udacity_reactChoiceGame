@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import LoadingBar from 'react-redux-loading'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { handleQuestions, handleUsers, handleAuth } from '../actions/shared'
 
