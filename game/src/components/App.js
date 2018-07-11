@@ -23,7 +23,7 @@ class App extends Component {
     const { data } = this.props
     const PrivateRoute = ({ component: Component, ...rest }) => (
       <Route {...rest} render={(props) => (
-          true
+          this.props.status
           ? <Component {...props} />
           : <Redirect to='/login'/>
         )}/>
@@ -33,17 +33,14 @@ class App extends Component {
       <Router>
         <Fragment>
           <div className='container'>
-            {this.props.data
-              ? null
-              : <Switch>
-                  <Route path='/login' component={Login}/>
-                  <PrivateRoute path='/' exact component={Dashboard}/>
-                  <PrivateRoute path='/questions/:id' component={Question}/>
-                  <PrivateRoute path='/add' component={AddQuestion}/>
-                  <PrivateRoute path='/leaderboard' component={Leaderboard}/>
-                  <Route component={Error}/>
-                </Switch>
-            }
+            <Switch>
+              <Route path='/login' component={Login}/>
+              <PrivateRoute path='/' exact component={Dashboard}/>
+              <PrivateRoute path='/questions/:id' component={Question}/>
+              <PrivateRoute path='/add' component={AddQuestion}/>
+              <PrivateRoute path='/leaderboard' component={Leaderboard}/>
+              <Route component={Error}/>
+            </Switch>
           </div>
         </Fragment>
       </Router>
@@ -53,7 +50,7 @@ class App extends Component {
 
 function mapStateToProps({ authedUser }) {
   return {
-    data: authedUser === true
+    status: authedUser.status
   }
 }
 

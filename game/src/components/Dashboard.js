@@ -21,10 +21,11 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, authedUser }) {
   return {
     data: Object.keys(questions)
-      .sort((a,b) => questions[b].timestamp - questions [a].timestamp)
+      .sort((a,b) => questions[b].timestamp - questions [a].timestamp),
+    current: authedUser
   }
 }
 

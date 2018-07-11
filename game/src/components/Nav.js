@@ -1,7 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-export default function Nav() {
+function Nav() {
   return (
     <nav className='nav'>
       <ul>
@@ -26,6 +27,13 @@ export default function Nav() {
           </NavLink>
         </li>
       </ul>
+      <h4>Currently Logged in: {this}</h4>
     </nav>
   )
 }
+
+function mapStateToProps({ authedUser }) {
+  currentlyLoggedIn: authedUser.id
+}
+
+export default connect(mapStateToProps)(Nav)

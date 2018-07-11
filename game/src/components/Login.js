@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { authedUser } from '../actions/authedUser'
 
 class Login extends Component {
@@ -9,7 +9,8 @@ class Login extends Component {
   }
 
   handleSubmit = (e) => {
-    this.props.dispatch(authedUser(this.state.value))
+    e.preventDefault()
+    this.props.dispatch(authedUser(this.state.value, true))
   }
 
   handleChange = (e) => {
@@ -19,6 +20,11 @@ class Login extends Component {
 
   render() {
     const { data, current } = this.props
+    console.log("HERE", current)
+
+    if(current.status === true) {
+      return <Redirect to='/' />
+    }
 
     return(
       <div>
@@ -30,7 +36,6 @@ class Login extends Component {
           </select>
           <input type='submit' value='Login' className='btn'/>
         </form>
-        <p>{this.props.current}</p>
       </div>
     )
   }
