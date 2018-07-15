@@ -6,7 +6,7 @@ class Leaderboard extends Component {
   render() {
     const { data } = this.props
 
-    console.log(data)
+    console.log(Object.values(data[0].answers).length)
     return(
       <div>
         <Nav />
