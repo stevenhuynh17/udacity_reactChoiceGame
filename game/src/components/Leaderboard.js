@@ -10,7 +10,7 @@ class Leaderboard extends Component {
     return(
       <div>
         <Nav />
-        {data.map((value) => {console.log(value.id)})}
+        {data.map((value) => <p>{value.id}</p>)}
       </div>
     )
   }
