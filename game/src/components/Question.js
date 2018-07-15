@@ -23,7 +23,6 @@ class Question extends Component {
 }
 
 function mapStateToProps({questions}, {id}) {
-  console.log(id)
   const question = questions[id]
 
   return {

@@ -4,22 +4,21 @@ import Nav from './Nav'
 
 class Leaderboard extends Component {
   render() {
-    const { question } = this.props
-    const { id } = question
+    const { data } = this.props
+
+    console.log(data)
     return(
       <div>
         <Nav />
-        { id }
+        {data.map((value) => {console.log(value.id)})}
       </div>
     )
   }
 }
 
-function mapStateToProps({questions}, {id}) {
-  console.log(id)
-  const question = questions[id]
+function mapStateToProps({users}) {
   return {
-    question: question
+    data: Object.values(users)
   }
 }
 
