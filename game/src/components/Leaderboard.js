@@ -11,7 +11,7 @@ class Leaderboard extends Component {
     return(
       <div>
         <Nav />
-        {data.map((value) => <p>{value.id}</p>)}
+        {data.map((value) => <p>{Object.keys(value.answers).length} | {value.name}</p>)}
       </div>
     )
   }

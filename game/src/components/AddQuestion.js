@@ -7,6 +7,16 @@ class AddQuestion extends Component {
     return(
       <div>
         <Nav />
+        <form>
+          <h3>Would you rather?</h3>
+          <div>
+            <span>Option 1: </span><input type="text"></input>
+          </div>
+          <div>
+            <span>Option 2: </span><input type="text"></input>
+          </div>
+          <input type="submit" value="submit" className="btn" />
+        </form>
       </div>
     )
   }
