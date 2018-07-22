@@ -4,29 +4,31 @@ import { formatDate } from '../utils/helper'
 
 class Question extends Component {
   render() {
-    const { question } = this.props
+    const { question, users } = this.props
+    console.log(users)
     const { id, author, timestamp, optionOne, optionTwo } = question
 
     return(
       <div>
-        <div>
-          <p>{author}</p>
-          <p>{formatDate(timestamp)}</p>
-          <p>Would you rather?</p>
-          <span onClick={(e) => console.log("JOANNE SUCKS")}>{optionOne.text}</span>
-          <span> vs </span>
-          <span onClick={(e) => console.log("VIVIAN SUCKS")}>{optionTwo.text}</span>
-        </div>
+          <form>
+            <label>
+              <input type="radio" name="choice"/>
+              {optionOne.text}
+              <input type="radio" name="choice"/>
+              {optionTwo.text}
+            </label>
+          </form>
       </div>
     )
   }
 }
 
-function mapStateToProps({questions}, {id}) {
+function mapStateToProps({questions, users}, {id}) {
   const question = questions[id]
 
   return {
-    question: question
+    question: question,
+    users: users
   }
 }
 
