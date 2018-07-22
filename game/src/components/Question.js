@@ -10,14 +10,17 @@ class Question extends Component {
 
     return(
       <div>
-          <form>
-            <label>
-              <input type="radio" name="choice"/>
-              {optionOne.text}
-              <input type="radio" name="choice"/>
-              {optionTwo.text}
-            </label>
-          </form>
+        <p>{author}</p>
+        <p>{formatDate(timestamp)}</p>
+        <form>
+          <input type="radio" name="choice" value={optionOne.text}/>
+          {optionOne.text}
+          <br/>
+          <input type="radio" name="choice" value={optionTwo.text}/>
+          {optionTwo.text}
+          <br/>
+          <input type="submit" value="Vote" className="btn" />
+        </form>
       </div>
     )
   }
