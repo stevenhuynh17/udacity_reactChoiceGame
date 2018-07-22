@@ -3,15 +3,19 @@ import { connect } from 'react-redux'
 import Nav from './Nav'
 
 class Leaderboard extends Component {
+  calculate_top(data) {
+    return Object.values(data)
+      .sort((a,b) => Object.keys(b.answers).length - Object.keys(a.answers).length)
+  }
+
   render() {
     const { data } = this.props
-    // console.log(data)
-    // console.log(Object.keys(data[0].answers).length, Object.keys(data[1].answers).length)
-    const result = data.sort((a,b) => console.log('A:', Object.keys(a.answers).length, 'B:', Object.keys(b.answers).length))
+    const result = this.calculate_top(data)
+    // {data.map((value) => <p key={value.id}>{Object.keys(value.answers).length} | {value.name}</p>)}
     return(
       <div>
         <Nav />
-        {data.map((value) => <p>{Object.keys(value.answers).length} | {value.name}</p>)}
+        {result.map((value) => <p>{value.id}</p>)}
       </div>
     )
   }
@@ -19,8 +23,7 @@ class Leaderboard extends Component {
 
 function mapStateToProps({users}) {
   return {
-    data: Object.values(users)
-      .sort((a,b) => Object.keys(b.answers).length - Object.keys(a.answers).length)
+    data: users
   }
 }
 
