@@ -5,11 +5,12 @@ import { formatDate } from '../utils/helper'
 class Question extends Component {
   render() {
     const { question, users } = this.props
-    console.log(users)
     const { id, author, timestamp, optionOne, optionTwo } = question
+    const { } = users
 
     return(
       <div>
+
         <p>{author}</p>
         <p>{formatDate(timestamp)}</p>
         <form>
@@ -28,6 +29,7 @@ class Question extends Component {
 
 function mapStateToProps({questions, users}, {id}) {
   const question = questions[id]
+  console.log(users);
 
   return {
     question: question,

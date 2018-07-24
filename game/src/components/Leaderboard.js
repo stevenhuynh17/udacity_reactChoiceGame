@@ -9,17 +9,14 @@ class Leaderboard extends Component {
   }
 
   count_questions(user) {
-    console.log(user.questions.length)
     return user.questions.length
   }
 
   count_answers(user) {
-    console.log(Object.keys(user.answers).length)
     return Object.keys(user.answers).length
   }
 
   calc_total(user) {
-    console.log(this.count_questions(user) + this.count_answers(user))
     return this.count_questions(user) + this.count_answers(user)
   }
 
@@ -30,7 +27,15 @@ class Leaderboard extends Component {
     return(
       <div>
         <Nav />
-        {result.map((value) => <p>{value.id}{value.questions.length}{Object.keys(value.answers).length}</p>)}
+        {result.map((value) => (
+          <div key={value.id}>
+            <img src={value.avatarURL} className="avatar"/>
+            <p>{value.name}</p>
+            <p>Created Questions: {this.count_questions(value)}</p>
+            <p>Answered Questions: {this.count_answers(value)}</p>
+            <p>Score: {this.calc_total(value)}</p>
+          </div>
+        ))}
       </div>
     )
   }
