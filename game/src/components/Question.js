@@ -5,13 +5,13 @@ import { formatDate } from '../utils/helper'
 class Question extends Component {
   render() {
     const { question, users } = this.props
-    const { id, author, timestamp, optionOne, optionTwo } = question
-    const { } = users
+    const { author, timestamp, optionOne, optionTwo } = question
+    const { avatarURL, name} = users[author]
 
     return(
       <div>
-
-        <p>{author}</p>
+        <img src={avatarURL} className="avatar" />
+        <p>{name}</p>
         <p>{formatDate(timestamp)}</p>
         <form>
           <input type="radio" name="choice" value={optionOne.text}/>
@@ -29,7 +29,6 @@ class Question extends Component {
 
 function mapStateToProps({questions, users}, {id}) {
   const question = questions[id]
-  console.log(users);
 
   return {
     question: question,
