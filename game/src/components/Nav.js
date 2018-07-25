@@ -10,7 +10,7 @@ class Nav extends Component {
 
   render() {
     return (
-      <div>
+      <div className="center">
         <nav className='nav'>
           <ul>
             <li>

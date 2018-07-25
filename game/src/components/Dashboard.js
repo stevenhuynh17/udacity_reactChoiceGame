@@ -6,16 +6,18 @@ import Nav from './Nav'
 class Dashboard extends Component {
   render() {
     return(
-      <div>
+      <div className="center">
         <Nav />
         <h3>Questions</h3>
-        <ul>
-          {this.props.data.map((id) => (
-            <li key={id}>
-              <Question id={id} />
-            </li>
-          ))}
-        </ul>
+        <div>
+          <ul>
+            {this.props.data.map((id) => (
+              <li key={id}>
+                <Question id={id} />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     )
   }
