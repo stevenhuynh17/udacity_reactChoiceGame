@@ -27,6 +27,7 @@ class Leaderboard extends Component {
     return(
       <div>
         <Nav />
+        <h3>Leaderboard</h3>
         {result.map((value) => (
           <div key={value.id}>
             <img src={value.avatarURL} className="avatar"/>
