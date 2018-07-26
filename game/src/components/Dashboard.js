@@ -8,7 +8,10 @@ class Dashboard extends Component {
     return(
       <div className="center">
         <Nav />
-        <h3>Questions</h3>
+        <div>
+          <h3>Unanswered Questions</h3>
+          <h3>Answered Questions</h3>
+        </div>
         <div>
           <ul>
             {this.props.data.map((id) => (

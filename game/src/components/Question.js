@@ -20,14 +20,19 @@ class Question extends Component {
   }
 
   render() {
-    const { question, users, id } = this.props
+    const { question = question ? question : this.props.location.state.question, users, id } = this.props
     const { author, timestamp, optionOne, optionTwo } = question
-    const { avatarURL, name} = users[author]
+    const { avatarURL, name } = users[author]
 
     return(
 
         <div className="question">
-          <Link to={`/questions/${id}`}>
+          <Link to={{
+            pathname: `/questions/${id}`,
+            state: {
+              question: question
+            }
+          }}>
           <img src={avatarURL} className="avatar" />
           <div>
             <p>{name}</p>
@@ -56,11 +61,10 @@ class Question extends Component {
 
 function mapStateToProps({questions, users}, {id}) {
   const question = questions[id]
-  console.log(id)
   return {
-    question: question ? question : null,
+    question: question,
     users: users
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Question))
+export default connect(mapStateToProps)(withRouter(Question))
