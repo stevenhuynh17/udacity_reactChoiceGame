@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Unanswered from './Unanswered'
 import Question from './Question'
 import Nav from './Nav'
 
 class Dashboard extends Component {
   render() {
+    const { questions, data } = this.props
     return(
       <div className="center">
         <Nav />
@@ -14,9 +16,9 @@ class Dashboard extends Component {
         </div>
         <div>
           <ul>
-            {this.props.data.map((id) => (
+            {data.map((id) => (
               <li key={id}>
-                <Question id={id} />
+                <Unanswered id={id} />
               </li>
             ))}
           </ul>
@@ -30,7 +32,8 @@ function mapStateToProps({ questions, authedUser }) {
   return {
     data: Object.keys(questions)
       .sort((a,b) => questions[b].timestamp - questions [a].timestamp),
-    current: authedUser
+    current: authedUser,
+    questions: questions
   }
 }
 

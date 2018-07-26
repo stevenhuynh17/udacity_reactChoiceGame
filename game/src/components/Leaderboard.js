@@ -27,9 +27,11 @@ class Leaderboard extends Component {
     return(
       <div>
         <Nav />
-        <h3>Leaderboard</h3>
+        <div className="center">
+          <h3>Leaderboard</h3>
+        </div>
         {result.map((value) => (
-          <div key={value.id}>
+          <div className="question" key={value.id}>
             <img src={value.avatarURL} className="avatar"/>
             <p>{value.name}</p>
             <p>Created Questions: {this.count_questions(value)}</p>

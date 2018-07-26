@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
 import { formatDate } from '../utils/helper'
+import Nav from './Nav'
 
 class Question extends Component {
   state = {
@@ -25,14 +25,9 @@ class Question extends Component {
     const { avatarURL, name } = users[author]
 
     return(
-
+        <div>
+        <Nav />
         <div className="question">
-          <Link to={{
-            pathname: `/questions/${id}`,
-            state: {
-              question: question
-            }
-          }}>
           <img src={avatarURL} className="avatar" />
           <div>
             <p>{name}</p>
@@ -53,8 +48,8 @@ class Question extends Component {
               <input type="submit" value="Vote" className="btn" />
             </form>
           </div>
-          </Link>
         </div>
+      </div>
     )
   }
 }
@@ -67,4 +62,4 @@ function mapStateToProps({questions, users}, {id}) {
   }
 }
 
-export default connect(mapStateToProps)(withRouter(Question))
+export default connect(mapStateToProps)(Question)
