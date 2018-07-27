@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import Unanswered from './Unanswered'
-import Question from './Question'
+import Answered from './Answered'
 import Nav from './Nav'
 
 class Dashboard extends Component {
@@ -37,8 +38,20 @@ class Dashboard extends Component {
       <div className="center">
         <Nav />
         <div>
-          <h3 onClick={this.select_questions}>Unanswered Questions</h3>
-          <h3 onClick={this.select_polls}>Answered Questions</h3>
+          <nav className='nav'>
+            <ul>
+              <li>
+                <NavLink to='' onClick={this.select_questions} exact activeClassName='active'>
+                  Unanswered Questions
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to='' onClick={this.select_polls} exact activeClassName='active'>
+                  Answered Questions
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
         </div>
         <div>
           {this.state.view === "questions" && (
@@ -46,6 +59,15 @@ class Dashboard extends Component {
               {data.map((id) => (
                 <li key={id}>
                   <Unanswered id={id} />
+                </li>
+              ))}
+            </ul>
+          )}
+          {this.state.view === "polls" && (
+            <ul>
+              {data.map((id) => (
+                <li key={id}>
+                  <Answered id={id}/>
                 </li>
               ))}
             </ul>

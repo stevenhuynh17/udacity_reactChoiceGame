@@ -11,6 +11,8 @@ import Question from './Question'
 import AddQuestion from './AddQuestion'
 import Error from './Error'
 import Leaderboard from './Leaderboard'
+import Poll from './Poll'
+import Nav from './Nav'
 
 class App extends Component {
   componentDidMount() {
@@ -37,6 +39,7 @@ class App extends Component {
               <Route path='/login' component={Login}/>
               <PrivateRoute path='/' exact component={Dashboard}/>
               <PrivateRoute path='/questions/:id' component={Question}/>
+              <PrivateRoute path='/poll/:id' component={Poll}/>
               <PrivateRoute path='/add' component={AddQuestion}/>
               <PrivateRoute path='/leaderboard' component={Leaderboard}/>
               <Route component={Error}/>

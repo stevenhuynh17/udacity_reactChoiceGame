@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { formatDate } from '../utils/helper'
+import Question from './Question'
 
 class Unanswered extends Component {
   render() {
