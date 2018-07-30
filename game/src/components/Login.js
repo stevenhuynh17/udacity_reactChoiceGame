@@ -5,7 +5,7 @@ import { authedUser } from '../actions/authedUser'
 
 class Login extends Component {
   state = {
-    value: 'Sarah Edo'
+    value: "sarahedo"
   }
 
   handleSubmit = (e) => {
@@ -20,7 +20,6 @@ class Login extends Component {
 
   render() {
     const { data, current } = this.props
-    console.log("HERE", current)
 
     if(current.status === true) {
       return <Redirect to='/' />
@@ -31,7 +30,7 @@ class Login extends Component {
         <form onSubmit={this.handleSubmit}>
           <select value={this.state.value} onChange={this.handleChange} className='dropdown'>
           {data.map((user) => (
-            <option key={user.id} value={user.name}>{user.name}</option>
+            <option key={user.id} value={user.id}>{user.name}</option>
           ))}
           </select>
           <input type='submit' value='Login' className='btn'/>

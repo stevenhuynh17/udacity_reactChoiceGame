@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatDate } from '../utils/helper'
+import { handleAddVote } from '../actions/questions'
 import Nav from './Nav'
 
 class Question extends Component {
@@ -10,7 +11,9 @@ class Question extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state.selected)
+    const qid = this.props.match.params.id
+    const answer = this.state.selected
+    this.props.dispatch(handleAddVote(qid, answer))
   }
 
   handleChange = (e) => {
@@ -22,6 +25,8 @@ class Question extends Component {
   render() {
     const { question = question ? question : this.props.location.state.question, users, id } = this.props
     const { author, timestamp, optionOne, optionTwo } = question
+    console.log(users)
+    console.log(author)
     const { avatarURL, name } = users[author]
 
     return(
@@ -36,12 +41,12 @@ class Question extends Component {
             <div>
               <form onSubmit={this.handleSubmit}>
                 <label>
-                  <input type="radio" name="choice" value={optionOne.text} onChange={this.handleChange}/>
+                  <input type="radio" name="choice" value={"optionOne"} onChange={this.handleChange}/>
                   {optionOne.text}
                 </label>
                 <br/>
                 <label>
-                  <input type="radio" name="choice" value={optionTwo.text} onChange={this.handleChange}/>
+                  <input type="radio" name="choice" value={"optionTwo"} onChange={this.handleChange}/>
                   {optionTwo.text}
                 </label>
                 <br/>
@@ -54,7 +59,7 @@ class Question extends Component {
   }
 }
 
-function mapStateToProps({questions, users}, {id}) {
+function mapStateToProps({questions, users, authedUser}, {id}) {
   const question = questions[id]
   return {
     question: question,
