@@ -19,11 +19,12 @@ export default function questions(state = {}, action) {
           ...state[qid],
           [answer]: {
             ...state[qid][answer],
-            text: "SUCK IT"
+            votes: state[qid][answer].votes.concat([authedUser])
           }
         }
 
       }
+    // state[qid][answer].votes.filter((voter) => voter !== authedUser)
     // IMPORTANT FOR INITIAL STATE
     default:
       return state
