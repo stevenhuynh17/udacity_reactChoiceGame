@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatDate } from '../utils/helper'
 import { handleAddVote } from '../actions/questions'
+import { Route, Redirect } from 'react-router'
 import Nav from './Nav'
 
 class Question extends Component {
@@ -25,8 +26,6 @@ class Question extends Component {
   render() {
     const { question = question ? question : this.props.location.state.question, users, id } = this.props
     const { author, timestamp, optionOne, optionTwo } = question
-    console.log(users)
-    console.log(author)
     const { avatarURL, name } = users[author]
 
     return(
