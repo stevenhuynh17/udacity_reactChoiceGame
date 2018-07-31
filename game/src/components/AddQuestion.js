@@ -27,10 +27,20 @@ class AddQuestion extends Component {
         <form onSubmit={this.handleSubmit} className="center question">
           <h3>Would you rather?</h3>
           <div>
-            <span>Option 1: </span><input type="text" name="optionOne" onChange={this.handleChange}></input>
+            <span>Option 1: </span>
+            <input
+              type="text"
+              name="optionOne"
+              onChange={this.handleChange}>
+            </input>
           </div>
           <div>
-            <span>Option 2: </span><input type="text" name="optionTwo" onChange={this.handleChange}></input>
+            <span>Option 2: </span>
+            <input
+              type="text"
+              name="optionTwo"
+              onChange={this.handleChange}>
+            </input>
           </div>
           <input type="submit" value="submit" className="btn" />
         </form>
