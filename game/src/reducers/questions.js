@@ -1,4 +1,4 @@
-import { RECEIVE_QUESTIONS, ADD_VOTE } from '../actions/questions'
+import { RECEIVE_QUESTIONS, ADD_VOTE, ADD_QUESTION } from '../actions/questions'
 
 export default function questions(state = {}, action) {
   switch(action.type) {
@@ -8,10 +8,17 @@ export default function questions(state = {}, action) {
         ...action.questions
       }
 
-    case ADD_VOTE :
+    case ADD_QUESTION :
       console.log("THE ACTION: ", action)
+      return {
+        ...state,
+        [action.question.id]: {
+          ...action.question
+        }
+      }
+
+    case ADD_VOTE :
       const { qid, answer, authedUser } = action
-      // console.log(qid, answer, authedUser)
 
       return {
         ...state,

@@ -22,13 +22,14 @@ export function handleAddQuestion(question) {
   const { optionOne, optionTwo, author } = question
   const optionOneText = optionOne
   const optionTwoText = optionTwo
-  
+
   return (dispatch, getState) => {
     return _saveQuestion({
       author,
       optionOneText,
       optionTwoText
     })
+    .then((data) => dispatch(addQuestion(data)))
   }
 }
 
