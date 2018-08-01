@@ -34,7 +34,6 @@ class Unanswered extends Component {
 
 function mapStateToProps({questions, users}, {id}) {
   const question = questions[id]
-  console.log(question)
   return {
     question: question,
     users: users

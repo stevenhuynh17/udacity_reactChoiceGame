@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Nav from './Nav'
+import { handleAddQuestion } from '../actions/questions'
 
 class AddQuestion extends Component {
   state = {
     optionOne: "",
-    optionTwo: ""
+    optionTwo: "",
+    author: this.props.authedUser
+  }
+
+  componentDidMount() {
+    this.setState({
+      author:  this.props.authedUser
+    })
   }
 
   handleChange = (e) => {
@@ -18,6 +26,7 @@ class AddQuestion extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     console.log(this.state)
+    this.props.dispatch(handleAddQuestion(this.state))
   }
 
   render() {
@@ -49,10 +58,11 @@ class AddQuestion extends Component {
   }
 }
 
-function mapStateToProps() {
+function mapStateToProps({authedUser}) {
+  console.log(authedUser)
   return {
-
+    authedUser: authedUser.id
   }
 }
 
-export default connect()(AddQuestion)
+export default connect(mapStateToProps)(AddQuestion)

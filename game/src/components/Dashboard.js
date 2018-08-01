@@ -34,7 +34,6 @@ class Dashboard extends Component {
 
   render() {
     const { questions, data } = this.props
-    console.log(data)
     return(
       <div className="center">
         <Nav />
