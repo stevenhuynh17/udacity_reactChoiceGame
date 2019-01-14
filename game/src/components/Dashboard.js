@@ -35,30 +35,28 @@ class Dashboard extends Component {
   render() {
     const { questions, data } = this.props
     return(
-      <div className="center">
+      <div className="">
         <Nav />
-        <div>
-          <nav className='nav'>
-            <ul>
-              <li>
-                <NavLink to='' onClick={this.select_questions} exact activeClassName='active'>
+        <div className="container">
+            <ul className="nav nav-tabs justify-content-center">
+              <li className="nav-item">
+                <a className="nav-link active" href="#unanswered" onClick={this.select_questions} data-toggle="tab">
                   Unanswered Questions
-                </NavLink>
+                </a>
               </li>
-              <li>
-                <NavLink to='' onClick={this.select_polls} exact activeClassName='active'>
+              <li className="nav-item">
+                <a className="nav-link" href="#answered" onClick={this.select_polls} data-toggle="tab">
                   Answered Questions
-                </NavLink>
+                </a>
               </li>
             </ul>
-          </nav>
-        </div>
+
         <div>
           {this.state.view === "questions" && (
             <ul>
               {data.map((id) => (
                 <li key={id}>
-                  <Unanswered id={id} />
+                  <Unanswered url={id} id="unanswered"/>
                 </li>
               ))}
             </ul>
@@ -67,12 +65,13 @@ class Dashboard extends Component {
             <ul>
               {data.map((id) => (
                 <li key={id}>
-                  <Answered id={id}/>
+                  <Answered url={id} id="answered"/>
                 </li>
               ))}
             </ul>
           )}
         </div>
+      </div>
       </div>
     )
   }

@@ -6,14 +6,14 @@ import Poll from './Poll'
 
 class Answered extends Component {
   render() {
-    const { question, users, id } = this.props
+    const { question, users, url } = this.props
     const { author, timestamp, optionOne, optionTwo } = question
     const { avatarURL, name } = users[author]
 
     return(
       <div className="question">
         <Link to={{
-          pathname: `/poll/${id}`,
+          pathname: `/poll/${url}`,
           state: {
             question: question
           }
@@ -32,8 +32,8 @@ class Answered extends Component {
   }
 }
 
-function mapStateToProps({questions, users}, {id}) {
-  const question = questions[id]
+function mapStateToProps({questions, users}, {url}) {
+  const question = questions[url]
   return {
     question: question,
     users: users

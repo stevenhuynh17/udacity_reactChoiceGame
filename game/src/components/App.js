@@ -26,6 +26,7 @@ class App extends Component {
     const PrivateRoute = ({ component: Component, ...rest }) => (
       <Route {...rest} render={(props) => (
           this.props.status
+          // true
           ? <Component {...props} />
           : <Redirect to='/login'/>
         )}/>
@@ -34,17 +35,15 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <div className='container'>
-            <Switch>
-              <Route path='/login' component={Login}/>
-              <PrivateRoute path='/' exact component={Dashboard}/>
-              <PrivateRoute path='/questions/:id' component={Question}/>
-              <PrivateRoute path='/poll/:id' component={Poll}/>
-              <PrivateRoute path='/add' component={AddQuestion}/>
-              <PrivateRoute path='/leaderboard' component={Leaderboard}/>
-              <Route component={Error}/>
-            </Switch>
-          </div>
+          <Switch>
+            <Route path='/login' component={Login}/>
+            <PrivateRoute path='/' exact component={Dashboard}/>
+            <PrivateRoute path='/questions/:id' component={Question}/>
+            <PrivateRoute path='/poll/:id' component={Poll}/>
+            <PrivateRoute path='/add' component={AddQuestion}/>
+            <PrivateRoute path='/leaderboard' component={Leaderboard}/>
+            <Route component={Error}/>
+          </Switch>
         </Fragment>
       </Router>
     );

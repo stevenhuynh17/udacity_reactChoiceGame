@@ -6,14 +6,14 @@ import Question from './Question'
 
 class Unanswered extends Component {
   render() {
-    const { question, users, id } = this.props
+    const { question, users, url } = this.props
     const { author, timestamp, optionOne, optionTwo } = question
     const { avatarURL, name } = users[author]
 
     return(
-      <div className="question">
+      <div className="container">
         <Link to={{
-          pathname: `/questions/${id}`,
+          pathname: `/questions/${url}`,
           state: {
             question: question
           }
@@ -32,8 +32,8 @@ class Unanswered extends Component {
   }
 }
 
-function mapStateToProps({questions, users}, {id}) {
-  const question = questions[id]
+function mapStateToProps({questions, users}, {url}) {
+  const question = questions[url]
   return {
     question: question,
     users: users

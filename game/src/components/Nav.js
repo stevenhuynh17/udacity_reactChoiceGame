@@ -10,33 +10,29 @@ class Nav extends Component {
 
   render() {
     return (
-      <div className="center">
-        <nav className='nav'>
-          <ul>
-            <li>
-              <NavLink to='/' exact activeClassName='active'>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to='/leaderboard' exact activeClassName='active'>
+      <navbar className="navbar fixed-top navbar-dark bg-primary navbar-expand-lg">
+        <div className="container">
+          <NavLink to='/' exact activeClassName='active' className="navbar-brand">
+            Home
+          </NavLink>
+          <div className="collapse navbar-collapse">
+            <div className="navbar-nav">
+              <NavLink className="nav-item nav-link" to='/leaderboard' exact activeClassName='active'>
                 Leaderboard
               </NavLink>
-            </li>
-            <li>
-              <NavLink to='/add' exact activeClassName='active'>
+              <NavLink className="nav-item nav-link" to='/add' exact activeClassName='active'>
                 Add Question
               </NavLink>
-            </li>
-            <li>
-              <button onClick={this.handleLogout} className='logout'>
-                Logout
-              </button>
-            </li>
-          </ul>
-        </nav>
-        <h5>Currently Logged In: {this.props.currentlyLoggedIn}</h5>
-      </div>
+            </div>
+          </div>
+          <div className="form-inline">
+            <span className="navbar-text pr-4">Currently Logged In: {this.props.currentlyLoggedIn}</span>
+            <button className="btn btn-danger" onClick={this.handleLogout}>
+              Logout
+            </button>
+          </div>
+        </div>
+      </navbar>
     )
   }
 }
