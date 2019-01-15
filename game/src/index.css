@@ -2,3 +2,16 @@ body {
   min-height: 75rem;
   padding-top: 4.5rem;
 }
+
+.profile {
+  height: 7rem;
+}
+
+.test:hover {
+  text-decoration: none;
+  color: blue;
+}
+
+.test {
+  color: black;
+}

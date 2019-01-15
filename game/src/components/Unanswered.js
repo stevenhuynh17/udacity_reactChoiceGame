@@ -18,14 +18,14 @@ class Unanswered extends Component {
             question: question
           }
         }}>
-          <img src={avatarURL} className="avatar" />
+          <img src={avatarURL} className="profile img-responsive img-thumbnail rounded-circle" />
           <p>{name}</p>
           <p>{formatDate(timestamp)}</p>
           <br/>
           <p>{optionOne.text}</p>
           <p> vs</p>
           <p>{optionTwo.text}</p>
-          <button className="btn">VOTE</button>
+          <button className="btn btn-lg btn-outline-success">VOTE</button>
         </Link>
       </div>
     )

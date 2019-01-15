@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import { formatDate } from '../utils/helper'
 import Poll from './Poll'
 
@@ -12,21 +12,54 @@ class Answered extends Component {
 
     return(
       <div className="question">
-        <Link to={{
+        <NavLink to={{
           pathname: `/poll/${url}`,
           state: {
             question: question
           }
-        }}>
-          <img src={avatarURL} className="avatar" />
-          <p>{name}</p>
-          <p>{formatDate(timestamp)}</p>
-          <br/>
-          <p>{optionOne.text}</p>
-          <p> vs</p>
-          <p>{optionTwo.text}</p>
-          <button className="btn">VIEW</button>
-        </Link>
+        }}
+          className="test"
+        >
+          <div className="container-fluid">
+            <div className="row align-items-center">
+              <div className="col-4">
+                <div className="row align-items-center">
+                  <div className="col-5">
+                    <img src={avatarURL} className="profile img-responsive img-thumbnail rounded-circle" />
+                  </div>
+                  <div className="col-7">
+                    <p>{name}</p>
+                    <p>{formatDate(timestamp)}</p>
+                  </div>
+                </div>
+
+
+              </div>
+              <div className="col-6">
+                <div className="row align-items-center">
+                  <div className="col">
+                    <div className="row float-right">
+                      <div className="pr-3">
+                        <p>{optionOne.text}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="">
+                    <p>vs</p>
+                  </div>
+                  <div className="col">
+                    <p>{optionTwo.text}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-2">
+                <button className="btn btn-lg btn-outline-info">VIEW</button>
+              </div>
+
+            </div>
+
+          </div>
+        </NavLink>
       </div>
     )
   }

@@ -51,20 +51,20 @@ class Dashboard extends Component {
               </li>
             </ul>
 
-        <div>
+        <div className="text-color">
           {this.state.view === "questions" && (
-            <ul>
+            <ul className="list-group">
               {data.map((id) => (
-                <li key={id}>
+                <li className="list-group-item" key={id}>
                   <Unanswered url={id} id="unanswered"/>
                 </li>
               ))}
             </ul>
           )}
           {this.state.view === "polls" && (
-            <ul>
+            <ul className="list-group">
               {data.map((id) => (
-                <li key={id}>
+                <li className="list-group-item" key={id}>
                   <Answered url={id} id="answered"/>
                 </li>
               ))}
